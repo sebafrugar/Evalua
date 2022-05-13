@@ -61,28 +61,28 @@ const Register = (props) => {
             }) =>{
         return (
             <div>
-                <Form className= "contact" method= "post" onSubmit={handleSubmit}>
-                    <label htmlFor="firstName" className="col-sm-2 col-form-label">Nombre</label>
-                    <Field id='firstName'type="text" className="form-control" placeholder="Nombre" name='firstName'/>
+                <Form method= "post" onSubmit={handleSubmit}>
+                    <label htmlFor="firstName">Nombre</label>
+                    <Field id='firstName'type="text" placeholder="Nombre" name='firstName'/>
                     {errors.firstName && touched.firstName && <p>{errors.firstName}</p>}
         
-                    <label htmlFor="lastName" className="col-sm-2 col-form-label">Apellido</label>
-                    <Field  id='lastName' type="text" placeholder="Apellido" className="form-control" name='lastName'/>
+                    <label htmlFor="lastName">Apellido</label>
+                    <Field  id='lastName' type="text" placeholder="Apellido" name='lastName'/>
                     {errors.lastName && touched.lastName && <p>{errors.lastName}</p>}
 
-                    <label htmlFor="email" className="col-form-label">Correo Electrónico</label>
-                    <Field id='email' type="text" placeholder="Email" className="form-control" name='email'/>
+                    <label htmlFor="email">Correo Electrónico</label>
+                    <Field id='email' type="text" placeholder="Email" name='email'/>
                     <ErrorMessage name="email">{(msg) => <p>{msg}</p>}</ErrorMessage>
 
-                    <label htmlFor="password" className="col-sm-2 col-form-label">Contraseña</label>
-                    <Field  id='password' type="password" placeholder="Contraseña" className="form-control" name='password'/>
+                    <label htmlFor="password">Contraseña</label>
+                    <Field  id='password' type="password" placeholder="Contraseña" name='password'/>
                     {errors.password && touched.password && <p>{errors.password}</p>}
 
-                    <label htmlFor="confirmPassword" className="col-form-label">Confirmar Contraseña</label>
-                    <Field  id='confirmPassword' type="password" placeholder="Confirmar Contraseña" className="form-control" name='confirmPassword'/>
+                    <label htmlFor="confirmPassword">Confirmar Contraseña</label>
+                    <Field  id='confirmPassword' type="password" placeholder="Confirmar Contraseña" name='confirmPassword'/>
                     {errors.confirmPassword && touched.confirmPassword && <p>{errors.confirmPassword}</p>}
                     <br></br>
-                    <button type="submit" disabled={Object.values(errors).length > 0} className="btn btn-primary rounded-pill border border-dark">Registrarse</button>
+                    <button type="submit" disabled={Object.values(errors).length > 0}>Registrarse</button>
                 </Form>
                 </div>
         );

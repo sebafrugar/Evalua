@@ -3,7 +3,7 @@ import logout from "../actions/logout";
 import { useUser } from "../contexts/userContext";
 import { useNavigate } from "react-router-dom";
 
-const Banner = () => {
+const UserOptions = () => {
       const { user, setUser } = useUser();
       const navigate = useNavigate();
 
@@ -29,4 +29,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default UserOptions;

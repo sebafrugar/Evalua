@@ -44,16 +44,16 @@ const Login = (props) => {
             }) =>{
         return (
             <div>
-                <Form className= "contact" method= "post" onSubmit={handleSubmit}>
-                    <label htmlFor="email" className="col-form-label">Correo Electrónico</label>
-                    <Field id='loginemail' type="text" placeholder="Email" className={`form-control`} name='email'/>
+                <Form method= "post" onSubmit={handleSubmit}>
+                    <label htmlFor="email">Correo Electrónico</label>
+                    <Field id='loginemail' type="text" placeholder="Email" name='email'/>
                     <ErrorMessage name="email">{(msg) => <p>{msg}</p>}</ErrorMessage>
 
-                    <label htmlFor="password" className="col-sm-2 col-form-label">Contraseña</label>
-                    <Field  id='loginpassword' type="password" placeholder="Contraseña" className={`form-control`} name='password'/>
+                    <label htmlFor="password">Contraseña</label>
+                    <Field  id='loginpassword' type="password" placeholder="Contraseña" name='password'/>
                     {errors.password && touched.password && <p>{errors.password}</p>}
                     <br></br>
-                    <button type="submit" disabled={Object.values(errors).length > 0} className="btn btn-primary rounded-pill border border-dark">Login</button>
+                    <button type="submit" disabled={Object.values(errors).length > 0}>Iniciar sesión</button>
                 </Form>
                 </div>
         );

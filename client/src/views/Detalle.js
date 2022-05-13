@@ -1,17 +1,15 @@
 import React from 'react';
-import Banner from '../components/banner';
+import UserOptions from '../components/UserOptions';
 import { Link } from 'react-router-dom'
 
 const Detalle = () => {
     return (
         <div>
             <div>
-                <Banner></Banner>
+                <UserOptions></UserOptions>
             </div>
             <div>
-                <Link to={"/"}>home</Link> <br></br>
-                <Link to={"/detalle"}>detalle</Link><br></br>
-                <Link to={"/registerLogin"}>Registro y login</Link>
+
             </div>
 
         </div>
