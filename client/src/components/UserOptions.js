@@ -15,13 +15,12 @@ const UserOptions = () => {
 };
   return (
     <div>
-        <div className="colorBanner">
-            <nav class="navbar navbar-light " >
-                <div class="container-fluid justify-content-evenly align-bottom">
-                    <h5 className="text-white">Evalúa</h5>
-                    <p className="text-white">mis evaluaciones</p>
-                    <button className="text-white" onClick={logOut}>cerrar sesión</button>
-                    <p className="text-white">hora usuario</p>
+        <div>
+            <nav>
+                <div>
+                    <p>mis evaluaciones</p>
+                    <button onClick={logOut}>Cerrar sesión</button>
+                    <p>hora usuario</p>
                 </div>
             </nav>
         </div>

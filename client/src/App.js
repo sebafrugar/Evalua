@@ -16,7 +16,7 @@ function App() {
               <h1>Evalúa</h1>
               <nav>
                 <Link to={"/"}>Inicio</Link>
-                <Link to={"/detalle"}>Detalle</Link>
+                <Link to={"/main"}><i className="fa-solid fa-magnifying-glass"></i> Evaluaciones</Link>
                 <Link to={"/registerLogin"}>Inicia sesión / Regístrate</Link>
               </nav>
             </div>
