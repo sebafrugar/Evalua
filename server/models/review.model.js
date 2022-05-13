@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const ReviewSchema = new mongoose.Schema(
     {
+        author: { type: mongoose.Schema.Types.ObjectId, 
+            ref: 'User', 
+            required: true 
+        },
         cargo: {
             type: String,
             required: [true, "el cargo es requerido"],
@@ -20,14 +24,15 @@ const ReviewSchema = new mongoose.Schema(
             type: String,
             required: [true, "Se requiere el comentario"],
             maxlength: [500, "500 caracteres maximo"],
-            minlength: [50, "50 caracteres minimo"]
+            minlength: [10, "50 caracteres minimo"]
         },
         lomalo: {
             type: String,
             required: [true, "Se requiere el comentario"],
             maxlength: [500, "500 caracteres maximo"],
-            minlength: [50, "50 caracteres minimo"]
+            minlength: [10, "50 caracteres minimo"]
         },
+        //estrellitas
         sueldo: {
             type: Number,
             required: [true],
@@ -45,6 +50,11 @@ const ReviewSchema = new mongoose.Schema(
             required: [true],
         },
         respetoalosfuncionarios: {
+            type: Number,
+            required: [true],
+        },
+        //promedio
+        promedio: {
             type: Number,
             required: [true],
         },

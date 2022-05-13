@@ -1,16 +1,15 @@
 const { Review } = require("../models/review.model");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+
 
 module.exports.allReviews = (req, res) => {
     console.log("estoy buscando todo");
-    Review.find()
+    Review.find().populate('author')
         .then(allReviews => res.json({allReviews}))
         .catch(err => res.json({ message: "Algo salio mal", error: err }));
 };
 
 module.exports.reviewById = (req, res) => {
-    Review.findOne({ _id: req.params.id })
+    Review.findOne({ _id: req.params.id }).populate('author')
         .then(reviewById => res.json({reviewById }))
         .catch(err => res.json({ message: "Algo salio mal", error: err }));
 };

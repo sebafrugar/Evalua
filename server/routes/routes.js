@@ -1,5 +1,6 @@
 const UserController = require('../controllers/user.controller');
 const ReviewController = require('../controllers/review.controller')
+const SchoolController = require('../controllers/school.controller')
 
 module.exports = function(app){
 
@@ -9,10 +10,16 @@ module.exports = function(app){
     app.get("/api/users", UserController.getAll);
     app.get('/api/user/:id', UserController.getUser);
 
-    app.post("/api/create", ReviewController.createNewReview );
-    app.put("/api/update/:id", ReviewController.updateReview);
-    app.delete("/api/delete/:id", ReviewController.deleteReview);
+    app.post("/api/review/create", ReviewController.createNewReview );
+    app.put("/api/review/update/:id", ReviewController.updateReview);
+    app.delete("/api/review/delete/:id", ReviewController.deleteReview);
     app.get("/api/allreview", ReviewController.allReviews);
     app.get('/api/review/:id', ReviewController.reviewById);
+
+    app.post("/api/school/create", SchoolController.createNewSchools );
+    app.put("/api/school/update/:id", SchoolController.updateSchools);
+    app.delete("/api/school/delete/:id", SchoolController.deleteSchools);
+    app.get("/api/allschool", SchoolController.allSchools);
+    app.get('/api/school/:id', SchoolController.schoolById);
 }
 
