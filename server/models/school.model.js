@@ -10,6 +10,10 @@ const SchoolSchema = new mongoose.Schema(
             type: String,
             required: [true, "la dirección de la escuela es requerido"],
         },
+        cuidad: {
+            type: String,
+            required: [true, "la cuidad de la escuela es requerida"],
+        },   
         reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
     }
 );
