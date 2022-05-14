@@ -16,7 +16,7 @@ const ReviewForm = () => {
 
     const createNewReview = (values) => {
         console.log(values)
-        axios.post("https://localhost:8000/api/review/create", values)
+        /*axios.post("https://localhost:8000/api/review/create", values)
             .then(res => {
                 console.log('Response', res)
                 back()
@@ -29,7 +29,7 @@ const ReviewForm = () => {
                     errorArr.push(errorResponse[key].message)
                 }
                 setErrors(errorArr);
-            })
+            })*/
     }
 
     return (
@@ -41,11 +41,11 @@ const ReviewForm = () => {
           comentario:"",
           lobueno:"",
           lomalo:"",
-          sueldo: 0,
-          entregamateriales: 0,
-          ambientedetrabajo: 0,
-          liderazgo: 0,
-          respetoalosfuncionarios: 0,
+          sueldo: "",
+          entregamateriales: "",
+          ambientedetrabajo: "",
+          liderazgo: "",
+          respetoalosfuncionarios: "",
 
         }}
         validationSchema={Yup.object().shape({
@@ -142,28 +142,28 @@ const ReviewForm = () => {
                     {errors.lomalo && touched.lomalo && <p>{errors.lomalo}</p>}
                     <br></br>
                     <label htmlFor="Sueldo">Sueldo</label>
-                    <Field  id='sueldo' type="number" max="5" min="0" name='sueldo'/>
+                    <Field  id='sueldo' type="number" max="5" min="0" step="0.1" name='sueldo'/>
                     {errors.sueldo && touched.sueldo && <p>{errors.sueldo}</p>}
                     <br></br>
                     <label htmlFor="Entrega de materiales">Entrega de materiales</label>
-                    <Field  id='entregamateriales' type="number" max="5" min="0" name='entregamateriales'/>
+                    <Field  id='entregamateriales' type="number" max="5" min="0" step="0.1" name='entregamateriales'/>
                     {errors.entregamateriales && touched.entregamateriales && <p>{errors.entregamateriales}</p>}
                     <br></br>
                     <label htmlFor="Ambiente de trabajo">Ambiente de trabajo</label>
-                    <Field  id='ambientedetrabajo' type="number" max="5" min="0" name='ambientedetrabajo'/>
+                    <Field  id='ambientedetrabajo' type="number" max="5" min="0" step="0.1" name='ambientedetrabajo'/>
                     {errors.ambientedetrabajo && touched.ambientedetrabajo && <p>{errors.ambientedetrabajo}</p>}
                     <br></br>
                     <label htmlFor="Liderazgo">Liderazgo</label>
-                    <Field  id='liderazgo' type="number" max="5" min="0" name='liderazgo'/>
+                    <Field  id='liderazgo' type="number" max="5" min="0" step="0.1" name='liderazgo'/>
                     {errors.liderazgo && touched.liderazgo && <p>{errors.liderazgo}</p>}
                     <br></br>
                     <label htmlFor="Respeto al los funcionarios">Respeto al los funcionarios</label>
-                    <Field  id='respetoalosfuncionarios' type="number" max="5" min="0" name='respetoalosfuncionarios'/>
+                    <Field  id='respetoalosfuncionarios' type="number" max="5" min="0" step="0.1" name='respetoalosfuncionarios'/>
                     {errors.respetoalosfuncionarios && touched.respetoalosfuncionarios && <p>{errors.respetoalosfuncionarios}</p>}
                     <br></br>
                     <button type="submit" disabled={Object.values(errors).length > 0}>Registrarse</button>
                 </Form>
-                {errors.map((error, i) => <p className='error' key={i}>{error}</p>)}
+                {/* {errors.map((error, i) => <p className='error' key={i}>{error}</p>)} */}
                 <div>
                     <button onClick={back}>Volver a escuela</button>
                 </div>
