@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SchoolList = (props) => {
 
@@ -11,6 +12,7 @@ const SchoolList = (props) => {
                     <div key={i}>
                         <h3>{school.nombreescuela}</h3>
                         <p>{school.direccionescuela}</p>
+                        <p><Link to={`/reviews/${school._id}`}>{school.reviews.length} evaluaciones</Link></p>
                     </div>
                 )
             })}
