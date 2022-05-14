@@ -2,6 +2,7 @@ import React,{ useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 
 const ReviewForm = () => {
 
@@ -15,6 +16,20 @@ const ReviewForm = () => {
 
     const createNewReview = (values) => {
         console.log(values)
+        axios.post("https://localhost:8000/api/review/create", values)
+            .then(res => {
+                console.log('Response', res)
+                back()
+            })
+            .catch(err => {
+                console.log(err.response.data)
+                const errorResponse = err.response.data.errors;
+                const errorArr = [];
+                for (const key of Object.keys(errorResponse)) {
+                    errorArr.push(errorResponse[key].message)
+                }
+                setErrors(errorArr);
+            })
     }
 
     return (
@@ -148,6 +163,7 @@ const ReviewForm = () => {
                     <br></br>
                     <button type="submit" disabled={Object.values(errors).length > 0}>Registrarse</button>
                 </Form>
+                {errors.map((error, i) => <p className='error' key={i}>{error}</p>)}
                 <div>
                     <button onClick={back}>Volver a escuela</button>
                 </div>
