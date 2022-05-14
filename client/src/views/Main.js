@@ -13,35 +13,39 @@ const Main = () => {
 
     const filteredSchools = schools?.filter(school => {
         return school.nombreescuela.toLowerCase().includes(searchParam.toLowerCase()) ||
-            school.ciudad.toLowerCase().includes(searchParam.toLowerCase())
+            school.direccionescuela.toLowerCase().includes(searchParam.toLowerCase())
     })
 
-    const getAllReview = () => {
+    useEffect(() => {
+        getAllSchool()
+    }, [searchParam]);
+
+    const getAllSchool = () => {
         setIsLoading(true)
-        axios.get('http://localhost:8000/api/allreview')
+        axios.get('http://localhost:8000/api/allschool')
             .then(res => {
                 setIsLoading(false)
-                setSchools(res.data.results)
-                setActiveFilter('getAllReview')
+                setSchools(res.data.allSchools)
+                setActiveFilter('getAllSchool')
             })
     }
 
     const getBest = () => {
         setIsLoading(true)
-        axios.get('http://localhost:8000/api/allreview')
+        axios.get('http://localhost:8000/api/allschool')
             .then(res => {
                 setIsLoading(false)
-                setSchools(res.data.results)
+                setSchools(res.data.allSchools)
                 setActiveFilter('getBest')
             })
     }
 
     const getWorst = () => {
         setIsLoading(true)
-        axios.get('http://localhost:8000/api/allreview')
+        axios.get('http://localhost:8000/api/allschool')
             .then(res => {
                 setIsLoading(false)
-                setSchools(res.data.results)
+                setSchools(res.data.allSchools)
                 setActiveFilter('getWorst')
             })
     }
@@ -55,10 +59,10 @@ const Main = () => {
                 <div>
                     <h2>Encuentra un establecimiento</h2>
                     <form>
-                        <input type="text" placeholder='Ingresa nombre o ciudad de escuela' value={searchParam} onChange={(e) => setSearchParam(e.target.value)}/>
+                        <input type="text" placeholder='Ingresa el nombre o dirección de la escuela' value={searchParam} onChange={(e) => setSearchParam(e.target.value)} />
                     </form>
                     <div>
-                        <button onClick={getAllReview} disabled={activeFilter === 'getAllReview'}>Todos</button>
+                        <button onClick={getAllSchool} disabled={activeFilter === 'getAllSchool'}>Todos</button>
                         <button onClick={getBest} disabled={activeFilter === 'getBest'}>Mejor valorados</button>
                         <button onClick={getWorst} disabled={activeFilter === 'getWorst'}>Peor valorados</button>
                     </div>

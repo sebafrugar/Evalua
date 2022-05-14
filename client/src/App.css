@@ -184,6 +184,22 @@ h1 {
   flex-direction: column;
 }
 
+.main h2 {
+  color: var(--purple);
+  font-weight: 400;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.main input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  padding: 15px;
+  text-align: center;
+}
+
 footer {
   width: 100%;
   display: flex;
