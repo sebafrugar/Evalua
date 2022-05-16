@@ -21,7 +21,7 @@ const RegisterLogin = () => {
                 axios.get(`http://localhost:8000/api/user/${res.data._id}`)
                     .then(res => {
                         setUser(res.data);
-                        navigate("/main");
+                        navigate("/search");
                     })
                     .catch(err => {
                         console.error(err);
@@ -48,7 +48,7 @@ const RegisterLogin = () => {
                 axios.get(`http://localhost:8000/api/user/${res.data._id}`)
                     .then(res => {
                         setUser(res.data);
-                        navigate("/main");
+                        navigate("/search");
                     })
                     .catch(err => {
                         console.error(err);
