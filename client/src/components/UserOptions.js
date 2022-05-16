@@ -6,26 +6,24 @@ import Misevaluaciones from "../views/Misevaluaciones";
 import { Link } from "react-router-dom";
 
 const UserOptions = () => {
-      const { user, setUser } = useUser();
-      const navigate = useNavigate();
+  const { user, setUser } = useUser();
+  const navigate = useNavigate();
 
   const logOut = async () => {
     const { success } = await logout();
     if (success) setUser(null);
     else window.alert("Error, could not log out");
     navigate("/");
-};
+  };
   return (
-    <div>
-        <div>
-            <nav>
-                <div>
-                    <Link to="/misevaluaciones">Mis Evaluaciones proceso</Link>
-                    <button onClick={logOut}>Cerrar sesión</button>
-                </div>
-            </nav>
-        </div>
-    </div>
+    <nav className="user-options">
+      <div>
+        <Link to="/misevaluaciones">Mis Evaluaciones proceso</Link>
+      </div>
+      <div>
+        <button onClick={logOut}>Cerrar sesión</button>
+      </div>
+    </nav>
   );
 };
 

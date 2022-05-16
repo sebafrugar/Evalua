@@ -9,6 +9,7 @@
   --purple-hover: #6462d6;
   --gray: #444444;
   --gray-05: rgb(68, 68, 68, 0.5);
+  --gray-005: rgb(68, 68, 68, 0.05);
   --red: #F06372;
 }
 
@@ -17,8 +18,29 @@ body {
   color: var(--gray);
 }
 
-input, textarea, input::placeholder {
-  font-size: 16px;
+a {
+  color: var(--purple);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input,
+textarea,
+button,
+input::placeholder {
+  font-size: 15px;
+  transition: all 0.2s ease-in;
+}
+
+input::placeholder {
+  color: var(--gray-05);
+}
+
+input, textarea {
+  outline-color: var(--purple-hover);
 }
 
 .header-container {
@@ -133,7 +155,7 @@ h1 {
   margin-bottom: 50px;
 }
 
-.register-login form input{
+.register-login form input {
   color: var(--gray);
   width: 100%;
   border: 1px solid #ccc;
@@ -193,12 +215,112 @@ h1 {
 }
 
 .main input {
+  font-size: 18px;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 25px;
-  margin-bottom: 20px;
   padding: 15px;
   text-align: center;
+}
+
+.main input::placeholder {
+  font-size: 18px;
+}
+
+.user-options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--gray-005);
+  margin: -30px 0 40px 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.user-options button {
+  cursor: pointer;
+  border: 1px solid var(--purple);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--purple);
+}
+
+.user-options button:hover {
+  background-color: var(--purple-hover);
+  color: white;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px 180px 70px;
+}
+
+.filters button {
+  color: var(--purple);
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.filters button:disabled {
+  pointer-events: none;
+  border-radius: 25px;
+  color: var(--gray);
+}
+
+.filters button:disabled:nth-child(1) {
+  background-color: #E6F8FF;
+}
+
+.filters button:disabled:nth-child(2) {
+  background-color: #E9FAE8;
+}
+
+.filters button:disabled:nth-child(3) {
+  background-color: #FEE8E8;
+}
+
+.filters button i {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.filters button:nth-child(1) i{
+  color: #59CBFC;
+}
+
+.filters button:nth-child(2) i{
+  color: #6ADA68;
+}
+
+.filters button:nth-child(3) i{
+  color: #F36668;
+}
+
+.school-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 20px 0;
+}
+
+.school-list-item div {
+  width: 100%;
+  font-size: 16px;
+}
+
+.school-list-item div p {
+  font-weight: 400;
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: var(--gray-05);
 }
 
 footer {
@@ -258,4 +380,18 @@ footer {
   100% {
     transform: rotate(360deg);
   }
+}
+
+@media only screen and (max-width: 960px) {
+
+  .filters {
+    margin: 30px 0 70px;
+  }
+
+  .filters button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 }

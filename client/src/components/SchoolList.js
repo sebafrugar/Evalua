@@ -9,10 +9,20 @@ const SchoolList = (props) => {
         <div>
             {schools?.map((school, i) => {
                 return (
-                    <div key={i}>
-                        <h3>{school.nombreescuela}</h3>
-                        <p>{school.direccionescuela}</p>
-                        <p><Link to={`/reviews/${school._id}`}>{school.reviews.length} evaluaciones</Link></p>
+                    <div className='school-list-item' key={i}>
+                        <div><Link to={`/reviews/${school._id}`}>{school.nombreescuela}</Link></div>
+                        <div>
+                            <p>Ciudad</p>
+                            {school.ciudad}
+                        </div>
+                        <div>
+                            <p>Dirección</p>
+                            {school.direccionescuela}
+                        </div>
+                        <div>
+                            <p>Evaluaciones</p>
+                            {school.reviews.length}
+                        </div>
                     </div>
                 )
             })}
