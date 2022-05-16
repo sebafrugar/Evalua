@@ -2,6 +2,8 @@ import React from "react";
 import logout from "../actions/logout";
 import { useUser } from "../contexts/userContext";
 import { useNavigate } from "react-router-dom";
+import Misevaluaciones from "../views/Misevaluaciones";
+import { Link } from "react-router-dom";
 
 const UserOptions = () => {
       const { user, setUser } = useUser();
@@ -18,9 +20,8 @@ const UserOptions = () => {
         <div>
             <nav>
                 <div>
-                    <p>mis evaluaciones</p>
+                    <Link to="/misevaluaciones">Mis Evaluaciones proceso</Link>
                     <button onClick={logOut}>Cerrar sesión</button>
-                    <p>hora usuario</p>
                 </div>
             </nav>
         </div>

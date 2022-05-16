@@ -50,7 +50,7 @@ module.exports.Login = async (req, res) => {
             })
             .json({ email: user.email, _id: user._id });
     } catch (err) {
-        res.status(400).json(err);
+        console.log(err);
     }
 };
 
