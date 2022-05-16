@@ -1,25 +1,36 @@
 import React,{ useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import { useUser } from '../contexts/userContext';
 
 const ReviewForm = () => {
 
     const { id } = useParams()
     let navigate = useNavigate()
     const [errors, setErrors] = useState([]);
+    const { user, setUser } = useUser();
+
+    console.log(user._id)
 
     const back = () => {
         navigate(`/reviews/${id}`)
     }
 
-    const createNewReview = (values) => {
-        console.log(values)
-        /*axios.post("https://localhost:8000/api/review/create", values)
+    const createNewReview = (newReview) => {
+        console.log(newReview)
+        axios.post(`http://localhost:8000/api/review/create`, {cargo : newReview.cargo, experiencia: newReview.experiencia,
+                                                                comentario: newReview.comentario,lobueno: newReview.lobueno,
+                                                                lomalo: newReview.lomalo, sueldo: newReview.sueldo,
+                                                                entregamateriales: newReview.entregamateriales,
+                                                                ambientedetrabajo: newReview.ambientedetrabajo,
+                                                                liderazgo: newReview.liderazgo,
+                                                                respetoalosfuncionarios: newReview.respetoalosfuncionarios,
+                                                                promedio: newReview.promedio , author : user._id})
             .then(res => {
-                console.log('Response', res)
-                back()
+                console.log(res)
+                //back()
             })
             .catch(err => {
                 console.log(err.response.data)
@@ -29,7 +40,7 @@ const ReviewForm = () => {
                     errorArr.push(errorResponse[key].message)
                 }
                 setErrors(errorArr);
-            })*/
+            })
     }
 
     return (
@@ -41,11 +52,12 @@ const ReviewForm = () => {
           comentario:"",
           lobueno:"",
           lomalo:"",
-          sueldo: "",
-          entregamateriales: "",
-          ambientedetrabajo: "",
-          liderazgo: "",
-          respetoalosfuncionarios: "",
+          sueldo: 0,
+          entregamateriales: 0,
+          ambientedetrabajo: 0,
+          liderazgo: 0,
+          respetoalosfuncionarios: 0,
+          promedio: 0,
 
         }}
         validationSchema={Yup.object().shape({
@@ -53,9 +65,9 @@ const ReviewForm = () => {
             .min(3, "El cargo requiere minimo 3 caracteres")
             .required ("Por favor ingresa su cargo"),
             
-            experiencia: Yup.string()
-            .min (3, "El apellido es muy corto")
-            .required("Por favor ingrese el apellido correctamente"),
+            experiencia: Yup.number()
+            .min (0)
+            .required ("la experiencia es obligatoria"),
             
             comentario: Yup.string()
             .min (10, "El comentario es muy corto")
@@ -97,12 +109,16 @@ const ReviewForm = () => {
             .max (5)
             .required ("la clasificacion es obligatoria"),
 
+            promedio: Yup.number()
+            .min (0)
+            .max (5)
+            .required ("la clasificacion es obligatoria"),
+
 
         })}
 
         onSubmit={(values, {setSubmitting}) =>{
             const timeOut = setTimeout(( )=>{
-                console.log(values);
                 createNewReview(values);
                 setSubmitting(false);
                 clearTimeout(timeOut);
@@ -160,6 +176,10 @@ const ReviewForm = () => {
                     <label htmlFor="Respeto al los funcionarios">Respeto al los funcionarios</label>
                     <Field  id='respetoalosfuncionarios' type="number" max="5" min="0" step="0.1" name='respetoalosfuncionarios'/>
                     {errors.respetoalosfuncionarios && touched.respetoalosfuncionarios && <p>{errors.respetoalosfuncionarios}</p>}
+                    <br></br>
+                    <label htmlFor="Promedio">Promedio</label>
+                    <Field  id='promedio' type="number" max="5" min="0" step="0.1" name='promedio'/>
+                    {errors.promedio && touched.promedio && <p>{errors.promedio}</p>}
                     <br></br>
                     <button type="submit" disabled={Object.values(errors).length > 0}>Registrarse</button>
                 </Form>
