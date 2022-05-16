@@ -11,8 +11,9 @@ const ReviewForm = () => {
     let navigate = useNavigate()
     const [errors, setErrors] = useState([]);
     const { user, setUser } = useUser();
+    const [promedio, setPromedio] = useState(0);
 
-    console.log(user._id)
+    console.log(promedio)
 
     const back = () => {
         navigate(`/reviews/${id}`)
@@ -20,6 +21,9 @@ const ReviewForm = () => {
 
     const createNewReview = (newReview) => {
         console.log(newReview)
+        let valoresPromedio = [newReview.sueldo + newReview.entregamateriales + newReview.ambientedetrabajo + newReview.liderazgo + newReview.respetoalosfuncionarios];
+        let sum = valoresPromedio.reduce((previous, current) => current += previous);
+        setPromedio(sum/5)
         axios.post(`http://localhost:8000/api/review/create`, {cargo : newReview.cargo, experiencia: newReview.experiencia,
                                                                 comentario: newReview.comentario,lobueno: newReview.lobueno,
                                                                 lomalo: newReview.lomalo, sueldo: newReview.sueldo,
@@ -27,7 +31,7 @@ const ReviewForm = () => {
                                                                 ambientedetrabajo: newReview.ambientedetrabajo,
                                                                 liderazgo: newReview.liderazgo,
                                                                 respetoalosfuncionarios: newReview.respetoalosfuncionarios,
-                                                                promedio: newReview.promedio , author : user._id})
+                                                                promedio: promedio.toFixed(1) , author : user._id})
             .then(res => {
                 console.log(res)
                 //back()
@@ -70,17 +74,17 @@ const ReviewForm = () => {
             .required ("la experiencia es obligatoria"),
             
             comentario: Yup.string()
-            .min (10, "El comentario es muy corto")
+            .min (3, "El comentario es muy corto")
             .max (500, "El comentario debe tener un maximo de 500 caracteres")
             .required ("Debe ingresar un comentario"),
 
             lobueno: Yup.string()
-            .min (10, "El minimo de caracteres son 50")
+            .min (3, "El minimo de caracteres son 50")
             .max (500, "El maximo de caracteres son 500")
             .required ("Debe ingresar lo bueno del establecimiento"),
 
             lomalo: Yup.string()
-            .min (10, "El minimo de caracteres son 50")
+            .min (3, "El minimo de caracteres son 50")
             .max (500, "El maximo de caracteres son 500")
             .required ("Debe ingresar lo malo del establecimiento"),
 
@@ -142,7 +146,7 @@ const ReviewForm = () => {
                     {errors.cargo && touched.cargo && <p>{errors.cargo}</p>}
                     <br></br>
                     <label htmlFor="experiencia">Años que lleva o estuvo en el establecimiento</label>
-                    <Field  id='experiencia' type="text"  name='experiencia'/>
+                    <Field  id='experiencia' type="number"  name='experiencia'/>
                     {errors.experiencia && touched.experiencia && <p>{errors.experiencia}</p>}
                     <br></br>
                     <label htmlFor="comentario">Comentario</label>
@@ -176,10 +180,6 @@ const ReviewForm = () => {
                     <label htmlFor="Respeto al los funcionarios">Respeto al los funcionarios</label>
                     <Field  id='respetoalosfuncionarios' type="number" max="5" min="0" step="0.1" name='respetoalosfuncionarios'/>
                     {errors.respetoalosfuncionarios && touched.respetoalosfuncionarios && <p>{errors.respetoalosfuncionarios}</p>}
-                    <br></br>
-                    <label htmlFor="Promedio">Promedio</label>
-                    <Field  id='promedio' type="number" max="5" min="0" step="0.1" name='promedio'/>
-                    {errors.promedio && touched.promedio && <p>{errors.promedio}</p>}
                     <br></br>
                     <button type="submit" disabled={Object.values(errors).length > 0}>Registrarse</button>
                 </Form>
