@@ -6,6 +6,7 @@ import SchoolDetails from './components/SchoolDetails';
 import RegisterLogin from './views/RegisterLogin';
 import ReviewForm from './components/ReviewForm';
 import { UserProvider } from './contexts/userContext';
+import Header from './components/Header';
 
 function App() {
   return (
@@ -13,14 +14,7 @@ function App() {
       <UserProvider>
         <Router>
           <div className="header-container">
-            <div className='header'>
-              <h1><Link to='/'>Evalúa</Link></h1>
-              <nav>
-                <Link to={"/"}>Inicio</Link>
-                <Link to={"/search"}><i className="fa-solid fa-magnifying-glass"></i> Evaluaciones</Link>
-                <Link to={"/registerLogin"}>Inicia sesión / Regístrate</Link>
-              </nav>
-            </div>
+                <Header/>
           </div>
           <Routes>
             <Route path="/" element={<Home></Home>} />
