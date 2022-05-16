@@ -18,19 +18,19 @@ const ReviewSchema = new mongoose.Schema(
             type: String,
             required: [true, "Se requiere el comentario"],
             maxlength: [500, "500 caracteres maximo"],
-            minlength: [50, "50 caracteres minimo"]
+            minlength: [3, "3 caracteres minimo"]
         },
         lobueno: {
             type: String,
             required: [true, "Se requiere el comentario"],
             maxlength: [500, "500 caracteres maximo"],
-            minlength: [10, "50 caracteres minimo"]
+            minlength: [3, "3 caracteres minimo"]
         },
         lomalo: {
             type: String,
             required: [true, "Se requiere el comentario"],
             maxlength: [500, "500 caracteres maximo"],
-            minlength: [10, "50 caracteres minimo"]
+            minlength: [3, "3 caracteres minimo"]
         },
         //estrellitas
         sueldo: {
