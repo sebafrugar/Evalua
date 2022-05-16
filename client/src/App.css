@@ -302,6 +302,14 @@ h1 {
   color: #F36668;
 }
 
+.search-results-text {
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 40px;
+  color: var(--purple);
+  font-style: italic;
+}
+
 .school-list-item {
   display: flex;
   justify-content: space-between;
