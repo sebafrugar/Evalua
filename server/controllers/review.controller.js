@@ -33,3 +33,9 @@ module.exports.deleteReview = (req, res) => {
         .then((result)=>res.json({resultado: result}))
         .catch((err)=>res.json({message: "Algo salio mal", error: err}))
 };
+
+module.exports.getReviewByUser = (req, res) => {
+    Review.find({ author: req.params.id }).populate('author')
+        .then((allReviews) => res.json({ reviews: allReviews }))
+        .catch((err) => res.json({ message: "Algo salio mal", error: err }))
+}

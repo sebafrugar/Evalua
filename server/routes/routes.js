@@ -21,5 +21,8 @@ module.exports = function(app){
     app.delete("/api/school/delete/:id", SchoolController.deleteSchools);
     app.get("/api/allschool", SchoolController.allSchools);
     app.get('/api/school/:id', SchoolController.schoolById);
+
+    app.get("/api/allreviewsbyuser/:id", ReviewController.getReviewByUser);
+
 }
 

@@ -2,8 +2,8 @@ import React from "react";
 import logout from "../actions/logout";
 import { useUser } from "../contexts/userContext";
 import { useNavigate } from "react-router-dom";
-import Misevaluaciones from "../views/Misevaluaciones";
 import { Link } from "react-router-dom";
+import EvaluacionesPersonales from "../views/EvaluacionesPersonales";
 
 const UserOptions = () => {
   const { user, setUser } = useUser();

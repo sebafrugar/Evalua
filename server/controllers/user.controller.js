@@ -1,6 +1,7 @@
 const { User } = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { allReviews } = require("./review.controller");
 
 module.exports.Register = async (req, res) => {
     try {
@@ -80,3 +81,4 @@ module.exports.getUser = async (req, res) => {
         return { success: false, data: e.message };
     }
 };
+

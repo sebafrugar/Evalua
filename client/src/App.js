@@ -7,6 +7,8 @@ import RegisterLogin from './views/RegisterLogin';
 import ReviewForm from './components/ReviewForm';
 import { UserProvider } from './contexts/userContext';
 import Header from './components/Header';
+import EvaluacionesPersonales from './views/EvaluacionesPersonales';
+import ViewEditReview from './views/ViewEditReview';
 
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
             <Route path="/reviews/:id" element={<SchoolDetails/>} />
             <Route path="/create-review/" element={<ReviewForm/>} />
             <Route path="/registerLogin" element={<RegisterLogin></RegisterLogin>} />
+            <Route path="/misevaluaciones" element={<EvaluacionesPersonales/>}/>
+            <Route path="/editarevaluaciones/:id" element={<ViewEditReview/>}/>
+
           </Routes>
         </Router>
         <footer>
