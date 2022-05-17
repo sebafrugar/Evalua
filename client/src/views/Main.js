@@ -3,9 +3,11 @@ import UserOptions from '../components/UserOptions';
 import axios from 'axios';
 import Loading from '../components/Loading';
 import SchoolList from '../components/SchoolList';
+import { useUser } from '../contexts/userContext';
 
 const Main = () => {
 
+    const { user, setUser } = useUser();
     const [schools, setSchools] = useState();
     const [activeFilter, setActiveFilter] = useState('getAllSchools');
     const [searchParam, setSearchParam] = useState('');
@@ -54,7 +56,7 @@ const Main = () => {
     return (
         <div className='main-container'>
             <div className='main'>
-                <UserOptions></UserOptions>
+                {user?<UserOptions></UserOptions>:''}
                 <div>
                     <h2>Encuentra un establecimiento</h2>
                     <form>
