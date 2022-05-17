@@ -42,3 +42,57 @@ module.exports.deleteSchools = (req, res) => {
         .then((school)=>res.json({resultado: school}))
         .catch((err)=>res.json({message: "Algo salio mal", error: err}))
 };
+
+module.exports.schoolsOrderedByRating = (req, res) => {
+    console.log("estoy buscando todo ordenado");
+    School.aggregate([{ $lookup: {from: 'reviews', localField: 'reviews', foreignField: '_id', as: 'review_docs'} },
+        {
+            $addFields: {
+              avgRating: {
+                "$avg": "$review_docs.promedio",
+              },
+              nRatings: {
+                $size: '$review_docs',
+              },
+            },
+          },{ "$sort": { "avgRating": -1 } },
+      ])
+        .then(allSchools => res.json({allSchools}))
+        .catch(err => res.json({ message: "Algo salio mal", error: err }));
+};
+
+module.exports.bestschools = (req, res) => {
+    console.log("estoy buscando todo ordenado");
+    School.aggregate([{ $lookup: {from: 'reviews', localField: 'reviews', foreignField: '_id', as: 'review_docs'} },
+        {
+            $addFields: {
+              avgRating: {
+                "$avg": "$review_docs.promedio",
+              },
+              nRatings: {
+                $size: '$review_docs',
+              },
+            },
+          },{ "$sort": { "avgRating": -1 } },{ "$limit": 3 }
+      ])
+        .then(allSchools => res.json({allSchools}))
+        .catch(err => res.json({ message: "Algo salio mal", error: err }));
+};
+
+module.exports.worstschools = (req, res) => {
+    console.log("estoy buscando todo ordenado");
+    School.aggregate([{ $lookup: {from: 'reviews', localField: 'reviews', foreignField: '_id', as: 'review_docs'} },
+        {
+            $addFields: {
+                avgRating: {
+                "$avg": "$review_docs.promedio",
+              },
+              nRatings: {
+                $size: '$review_docs',
+              },
+            },
+          },{ "$sort": { "avgRating": 1 } },{ "$limit": 3 }
+      ])
+        .then(allSchools => res.json({allSchools}))
+        .catch(err => res.json({ message: "Algo salio mal", error: err }));
+};

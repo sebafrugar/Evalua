@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SchoolCard from './SchoolCard';
 
 const SchoolList = (props) => {
 
@@ -7,15 +8,16 @@ const SchoolList = (props) => {
 
     return (
         <div>
-            {schools?.map((school, i) => {
-                return (
-                    <div key={i}>
-                        <h3>{school.nombreescuela}</h3>
-                        <p>{school.direccionescuela}</p>
-                        <p><Link to={`/reviews/${school._id}`}>{school.reviews.length} evaluaciones</Link></p>
-                    </div>
-                )
-            })}
+            {schools?.map((school, i) => (
+                <SchoolCard
+                    key={i}
+                    id={school._id}
+                    nombre={school.nombreescuela}
+                    ciudad={school.ciudad}
+                    direccion={school.direccionescuela}
+                    reviews={school.reviews.length}
+                />
+            ))}
         </div>
     );
 }

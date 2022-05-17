@@ -9,6 +9,8 @@
   --purple-hover: #6462d6;
   --gray: #444444;
   --gray-05: rgb(68, 68, 68, 0.5);
+  --gray-02: rgb(68, 68, 68, 0.2);
+  --gray-005: rgb(68, 68, 68, 0.05);
   --red: #F06372;
 }
 
@@ -17,8 +19,29 @@ body {
   color: var(--gray);
 }
 
-input, textarea, input::placeholder {
-  font-size: 16px;
+a {
+  color: var(--purple);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input,
+textarea,
+button,
+input::placeholder {
+  font-size: 15px;
+  transition: all 0.2s ease-in;
+}
+
+input::placeholder {
+  color: var(--gray-05);
+}
+
+input, textarea {
+  outline-color: var(--purple-hover);
 }
 
 .header-container {
@@ -133,7 +156,7 @@ h1 {
   margin-bottom: 50px;
 }
 
-.register-login form input{
+.register-login form input {
   color: var(--gray);
   width: 100%;
   border: 1px solid #ccc;
@@ -148,7 +171,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-.register-login button {
+.register-login button, .review-form button {
   cursor: pointer;
   background-color: var(--purple);
   color: white;
@@ -158,18 +181,89 @@ h1 {
   font-size: 15px;
 }
 
-.register-login button:hover {
+.register-login button:hover, .review-form button:hover {
   background-color: var(--purple-hover);
 }
 
-.register-login button:disabled {
+.register-login button:disabled, .review-form button:disabled {
   opacity: 0.5;
   pointer-events: none;
 }
 
-.register-login p {
+.register-login p, .review-form p {
   color: var(--red);
   margin-bottom: 25px
+}
+
+.review-form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.review-form {
+  width: 960px;
+  padding: 50px 20px;
+}
+
+.review-form h3 {
+  color: var(--purple);
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.review-form form {
+  display: flex;
+  gap: 80px;
+}
+
+.review-form form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.review-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.review-form form input, .review-form form textarea {
+  color: var(--gray);
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.breadcrumb {
+  border-bottom: 1px solid var(--gray-02);
+  margin-bottom: 50px;
+}
+
+.breadcrumb i {
+  margin-right: 10px
+}
+
+.breadcrumb button {
+  background-color: transparent;
+  color: var(--purple);
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.breadcrumb a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.breadcrumb button:hover {
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 .main-container {
@@ -193,12 +287,133 @@ h1 {
 }
 
 .main input {
+  font-size: 18px;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 25px;
-  margin-bottom: 20px;
   padding: 15px;
   text-align: center;
+}
+
+.main input::placeholder {
+  font-size: 18px;
+}
+
+.user-options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--gray-005);
+  margin: -30px 0 40px 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.user-options button {
+  cursor: pointer;
+  border: 1px solid var(--purple);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--purple);
+  background-color: transparent;
+}
+
+.user-options button:hover {
+  background-color: var(--purple-hover);
+  color: white;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px 180px 70px;
+}
+
+.filters button {
+  color: var(--purple);
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.filters button:disabled {
+  pointer-events: none;
+  border-radius: 25px;
+  color: var(--gray);
+}
+
+.filters button:disabled:nth-child(1) {
+  background-color: #E6F8FF;
+}
+
+.filters button:disabled:nth-child(2) {
+  background-color: #E9FAE8;
+}
+
+.filters button:disabled:nth-child(3) {
+  background-color: #FEE8E8;
+}
+
+.filters button i {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.filters button:nth-child(1) i{
+  color: #59CBFC;
+}
+
+.filters button:nth-child(2) i{
+  color: #6ADA68;
+}
+
+.filters button:nth-child(3) i{
+  color: #F36668;
+}
+
+.search-results-text {
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 40px;
+  color: var(--purple);
+  font-style: italic;
+}
+
+.school-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 20px 0;
+}
+
+.school-list-item div {
+  width: 100%;
+  font-size: 16px;
+}
+
+.school-list-item div p {
+  font-weight: 400;
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: var(--gray-05);
+}
+
+.school-details-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.school-details {
+  width: 960px;
+  padding: 50px 20px;
+  gap: 70px;
 }
 
 footer {
@@ -258,4 +473,18 @@ footer {
   100% {
     transform: rotate(360deg);
   }
+}
+
+@media only screen and (max-width: 960px) {
+
+  .filters {
+    margin: 30px 0 70px;
+  }
+
+  .filters button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 }
