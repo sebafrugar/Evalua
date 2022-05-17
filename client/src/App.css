@@ -331,6 +331,18 @@ h1 {
   color: var(--gray-05);
 }
 
+.school-details-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.school-details {
+  width: 960px;
+  padding: 50px 20px;
+  gap: 70px;
+}
+
 footer {
   width: 100%;
   display: flex;

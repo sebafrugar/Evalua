@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import SchoolCard from './SchoolCard';
 import Loading from '../components/Loading';
 
 const SchoolDetails = () => {
@@ -29,20 +30,21 @@ const SchoolDetails = () => {
     }
 
     return (
-        <div>
-            <div>
-                <p>{id}</p>
-                {!isLoading ? schools?.map((school, i) => {
-                    return (
-                        <div key={i}>
-                            <h3>{school.nombreescuela}</h3>
-                            <p>{school.direccionescuela}</p>
-                        </div>
-                    )
-                }):<Loading/>}
-                <Link to={`/create-review/${id}`}><button>Evaluar</button></Link>
-                <hr/>
+        <div className='school-details-container'>
+            <div className='school-details'>
                 <button onClick={back}>Volver al buscador</button>
+                <hr/>
+                {schools?.map((school, i) => (
+                <SchoolCard
+                    key={i}
+                    id={school._id}
+                    nombre={school.nombreescuela}
+                    ciudad={school.ciudad}
+                    direccion={school.direccionescuela}
+                    reviews={school.reviews.length}
+                />
+            ))}
+                <Link to={`/create-review/${id}`}><button>Evaluar</button></Link>
             </div>
 
         </div>
