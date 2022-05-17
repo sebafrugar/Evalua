@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useParams, useNavigate } from 'react-router-dom';
@@ -12,6 +12,7 @@ const ReviewForm = () => {
     const [errores, setErrores] = useState([]);
     const { user, setUser } = useUser();
     const [promedio, setPromedio] = useState(0);
+    const [school,setSchool] = useState();
 
     console.log(promedio)
 
@@ -34,6 +35,10 @@ const ReviewForm = () => {
                                                                 promedio: promedio.toFixed(1) , author : user._id})
             .then(res => {
                 console.log(res)
+                axios.put('http://localhost:8000/api/school/update/' + id, { reviews: [...school.reviews, res.data.newReview] })
+                .then(res => {
+                    console.log(res);
+                });
                 //back()
             })
             .catch(err => {
@@ -46,7 +51,11 @@ const ReviewForm = () => {
                 setErrores(errorArr);
             })
     }
-
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/school/' + id)
+            .then(res => setSchool(res.data.schoolById))
+            .catch(err => console.log(err))
+    }, []);
     return (
         <div >
             <Formik
