@@ -340,6 +340,12 @@ h1 {
   font-size: 15px;
 }
 
+.mis-evaluaciones hr {
+  border:none;
+  border-top: 1px solid var(--gray-02);
+  margin: 15px 0;
+}
+
 .btn-edit {
   background-color: var(--purple);
 }
