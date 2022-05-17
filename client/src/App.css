@@ -12,6 +12,7 @@
   --gray-02: rgb(68, 68, 68, 0.2);
   --gray-005: rgb(68, 68, 68, 0.05);
   --red: #F06372;
+  --red-hover: #ef7682;
 }
 
 body {
@@ -33,7 +34,6 @@ textarea,
 button,
 input::placeholder {
   font-size: 15px;
-  transition: all 0.2s ease-in;
 }
 
 input::placeholder {
@@ -299,13 +299,83 @@ h1 {
   font-size: 18px;
 }
 
+.mis-evaluaciones-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.mis-evaluaciones {
+  width: 960px;
+  display: flex;
+  padding: 50px 20px 0;
+  flex-direction: column;
+}
+
+.mis-evaluaciones-card {
+  background-color: var(--gray-005);
+  line-height: 25px;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.mis-evaluaciones-card span {
+  font-weight: 500;
+}
+
+.mis-evaluaciones .actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px
+}
+
+.mis-evaluaciones .actions button {
+  cursor: pointer;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 15px;
+}
+
+.mis-evaluaciones hr {
+  border:none;
+  border-top: 1px solid var(--gray-02);
+  margin: 15px 0;
+}
+
+.btn-edit {
+  background-color: var(--purple);
+}
+
+.btn-delete {
+  background-color: var(--red);
+}
+
+.btn-delete:hover {
+  background-color: var(--red-hover) !important;
+}
+
+.mis-evaluaciones .actions button:hover, .mis-evaluaciones .actions button:hover {
+  background-color: var(--purple-hover);
+}
+
+.mis-evaluaciones h2 {
+  color: var(--purple);
+  font-weight: 400;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
 .user-options {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--gray-005);
-  margin: -30px 0 40px 0;
+  margin: -15px 0 40px 0;
   padding: 10px 15px;
   border-radius: 10px;
 }
@@ -317,6 +387,10 @@ h1 {
   border-radius: 5px;
   color: var(--purple);
   background-color: transparent;
+}
+
+.user-options i {
+  margin-right: 10px
 }
 
 .user-options button:hover {
