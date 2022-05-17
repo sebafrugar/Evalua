@@ -24,5 +24,9 @@ module.exports = function(app){
 
     app.get("/api/allreviewsbyuser/:id", ReviewController.getReviewByUser);
 
+    app.get("/api/allschoolOrdered", SchoolController.schoolsOrderedByRating);
+    app.get("/api/bestschools", SchoolController.bestschools);
+    app.get("/api/worstschools", SchoolController.worstschools);
+
 }
 
