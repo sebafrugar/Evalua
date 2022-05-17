@@ -32,7 +32,7 @@ const ReviewForm = () => {
                                                                 ambientedetrabajo: newReview.ambientedetrabajo,
                                                                 liderazgo: newReview.liderazgo,
                                                                 respetoalosfuncionarios: newReview.respetoalosfuncionarios,
-                                                                promedio: promedioActualizado .toFixed(1) , author : user._id})
+                                                                promedio: promedioActualizado.toFixed(1) , author : user._id})
             .then(res => {
                 console.log(res)
                 axios.put('http://localhost:8000/api/school/update/' + id, { reviews: [...school.reviews, res.data.newReview] })
