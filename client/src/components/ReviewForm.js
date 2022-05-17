@@ -9,7 +9,7 @@ const ReviewForm = () => {
 
     const { id } = useParams()
     let navigate = useNavigate()
-    const [errors, setErrors] = useState([]);
+    const [errores, setErrores] = useState([]);
     const { user, setUser } = useUser();
     const [promedio, setPromedio] = useState(0);
 
@@ -43,7 +43,7 @@ const ReviewForm = () => {
                 for (const key of Object.keys(errorResponse)) {
                     errorArr.push(errorResponse[key].message)
                 }
-                setErrors(errorArr);
+                setErrores(errorArr);
             })
     }
 
@@ -187,7 +187,7 @@ const ReviewForm = () => {
                                     </div>
                                 </Form>
                             </div>
-                            {errors.map((error, i) => <p className='error' key={i}>{error}</p>)}
+                            {errores?.map((error, i) => <p className='error' key={i}>{error}</p>)}
                         </div>
 
                     );

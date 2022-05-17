@@ -6,6 +6,7 @@ const ReviewDetail = (props) => {
 
     return (
         <div>
+            <p> Aqui Mostrar un colegio y sus evaluaciones</p>
         </div>
     );
 }
