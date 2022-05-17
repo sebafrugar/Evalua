@@ -18,7 +18,7 @@ const UserOptions = () => {
   return (
     <nav className="user-options">
       <div>
-        <Link to="/misevaluaciones">Ver mis evaluaciones</Link>
+        <Link to="/misevaluaciones"><i className="fa-solid fa-check"></i>Ver mis evaluaciones</Link>
       </div>
       <div>
         <button onClick={logOut}>Cerrar sesión</button>
