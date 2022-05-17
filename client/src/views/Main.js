@@ -7,7 +7,7 @@ import SchoolList from '../components/SchoolList';
 const Main = () => {
 
     const [schools, setSchools] = useState();
-    const [activeFilter, setActiveFilter] = useState('getAllReview');
+    const [activeFilter, setActiveFilter] = useState('getAllSchools');
     const [searchParam, setSearchParam] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
@@ -18,36 +18,36 @@ const Main = () => {
     })
 
     useEffect(() => {
-        getAllSchool()
+        getAllSchools()
     }, [searchParam]);
 
-    const getAllSchool = () => {
+    const getAllSchools = () => {
         setIsLoading(true)
-        axios.get('http://localhost:8000/api/allschool')
+        axios.get('http://localhost:8000/api/allschoolOrdered')
             .then(res => {
                 setIsLoading(false)
                 setSchools(res.data.allSchools)
-                setActiveFilter('getAllSchool')
+                setActiveFilter('getAllSchools')
             })
     }
 
-    const getBest = () => {
+    const getBests = () => {
         setIsLoading(true)
-        axios.get('http://localhost:8000/api/allschool')
+        axios.get('http://localhost:8000/api/bestschools')
             .then(res => {
                 setIsLoading(false)
                 setSchools(res.data.allSchools)
-                setActiveFilter('getBest')
+                setActiveFilter('getBests')
             })
     }
 
-    const getWorst = () => {
+    const getWorsts = () => {
         setIsLoading(true)
-        axios.get('http://localhost:8000/api/allschool')
+        axios.get('http://localhost:8000/api/worstschools')
             .then(res => {
                 setIsLoading(false)
                 setSchools(res.data.allSchools)
-                setActiveFilter('getWorst')
+                setActiveFilter('getWorsts')
             })
     }
 
@@ -61,9 +61,9 @@ const Main = () => {
                         <input type="text" placeholder='Ingresa el nombre, ciudad o dirección de la escuela' value={searchParam} onChange={(e) => setSearchParam(e.target.value)} />
                     </form>
                     <div className='filters'>
-                        <button onClick={getAllSchool} disabled={activeFilter === 'getAllSchool'}><i className="fa-solid fa-layer-group"></i>Todos</button>
-                        <button onClick={getBest} disabled={activeFilter === 'getBest'}><i className="fa-solid fa-circle-arrow-up"></i>Mejor valorados</button>
-                        <button onClick={getWorst} disabled={activeFilter === 'getWorst'}><i className="fa-solid fa-circle-arrow-down"></i>Peor valorados</button>
+                        <button onClick={getAllSchools} disabled={activeFilter === 'getAllSchools'}><i className="fa-solid fa-layer-group"></i>Todos</button>
+                        <button onClick={getBests} disabled={activeFilter === 'getBests'}><i className="fa-solid fa-circle-arrow-up"></i>Mejor valorados</button>
+                        <button onClick={getWorsts} disabled={activeFilter === 'getWorsts'}><i className="fa-solid fa-circle-arrow-down"></i>Peor valorados</button>
                     </div>
                     {searchParam && <p className='search-results-text'>Hay {filteredSchools?.length} escuela(s) que coinciden con la búsqueda.</p>}
                     {!isLoading ? <div><SchoolList schools={filteredSchools} /></div> : <Loading />}

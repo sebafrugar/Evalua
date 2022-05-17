@@ -13,7 +13,7 @@ const ViewEditReview = () => {
 
     useEffect(() => {
         console.log("estoy llamando el use effec")
-        axios.get('http://localhost:8000/api/review/'+ id)
+        axios.get('http://localhost:8000/api/review/' + id)
             .then(res => setReview(res.data.reviewById))
             .catch(err => console.log(err))
     }, []);
@@ -22,15 +22,16 @@ const ViewEditReview = () => {
 
     const editReview = (values) => {
         console.log(values)
-         axios.put('http://localhost:8000/api/review/update/' + id,
-            {   cargo: values.cargo,
+        axios.put('http://localhost:8000/api/review/update/' + id,
+            {
+                cargo: values.cargo,
                 experiencia: values.experiencia,
                 comentario: values.comentario,
                 lobueno: values.lobueno,
-                lomalo : values.lomalo,
+                lomalo: values.lomalo,
                 sueldo: values.sueldo,
                 entregamateriales: values.entregamateriales,
-                ambientedetrabajo : values.ambientedetrabajo,
+                ambientedetrabajo: values.ambientedetrabajo,
                 liderazgo: values.liderazgo,
                 respetoalosfuncionarios: values.respetoalosfuncionarios,
                 promedio: values.promedio,
@@ -49,30 +50,34 @@ const ViewEditReview = () => {
                 setErrors(errorArr);
             })
     }
-    
+
 
 
 
     return (
         <div>
-            <div>
-            <Link to="/misevaluaciones">Mis Evaluaciones</Link>
-            </div>
-            {review && <EditReview onSubmitProp={editReview}
-                    cargo= {review.cargo}
-                    experiencia={review.experiencia}
-                    comentario={review.comentario}
-                    lobueno={review.lobueno}
-                    lomalo={review.lomalo}
-                    sueldo={review.sueldo}
-                    entregamateriales={review.entregamateriales}
-                    ambientedetrabajo={review.ambientedetrabajo}
-                    liderazgo={review.liderazgo}
-                    respetoalosfuncionarios={review.respetoalosfuncionarios}
-                    promedio={review.promedio}/>}
+            <div className='review-form-container'>
+                <div className='review-form'>
+                    <div className='breadcrumb'>
+                        <Link to="/misevaluaciones"><i className="fa-solid fa-angles-left"></i>Mis evaluaciones</Link>
+                    </div>
+                    {review && <EditReview onSubmitProp={editReview}
+                        cargo={review.cargo}
+                        experiencia={review.experiencia}
+                        comentario={review.comentario}
+                        lobueno={review.lobueno}
+                        lomalo={review.lomalo}
+                        sueldo={review.sueldo}
+                        entregamateriales={review.entregamateriales}
+                        ambientedetrabajo={review.ambientedetrabajo}
+                        liderazgo={review.liderazgo}
+                        respetoalosfuncionarios={review.respetoalosfuncionarios}
+                        promedio={review.promedio} />}
                     {errors.map((err, i) => <p key={i}>{err}</p>)}
+                </div>
+            </div>
 
-    </div>
+        </div>
     );
 }
 

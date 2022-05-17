@@ -9,6 +9,7 @@
   --purple-hover: #6462d6;
   --gray: #444444;
   --gray-05: rgb(68, 68, 68, 0.5);
+  --gray-02: rgb(68, 68, 68, 0.2);
   --gray-005: rgb(68, 68, 68, 0.05);
   --red: #F06372;
 }
@@ -170,7 +171,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-.register-login button {
+.register-login button, .review-form button {
   cursor: pointer;
   background-color: var(--purple);
   color: white;
@@ -180,18 +181,89 @@ h1 {
   font-size: 15px;
 }
 
-.register-login button:hover {
+.register-login button:hover, .review-form button:hover {
   background-color: var(--purple-hover);
 }
 
-.register-login button:disabled {
+.register-login button:disabled, .review-form button:disabled {
   opacity: 0.5;
   pointer-events: none;
 }
 
-.register-login p {
+.register-login p, .review-form p {
   color: var(--red);
   margin-bottom: 25px
+}
+
+.review-form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.review-form {
+  width: 960px;
+  padding: 50px 20px;
+}
+
+.review-form h3 {
+  color: var(--purple);
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.review-form form {
+  display: flex;
+  gap: 80px;
+}
+
+.review-form form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.review-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.review-form form input, .review-form form textarea {
+  color: var(--gray);
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.breadcrumb {
+  border-bottom: 1px solid var(--gray-02);
+  margin-bottom: 50px;
+}
+
+.breadcrumb i {
+  margin-right: 10px
+}
+
+.breadcrumb button {
+  background-color: transparent;
+  color: var(--purple);
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.breadcrumb a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.breadcrumb button:hover {
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 .main-container {
@@ -244,6 +316,7 @@ h1 {
   padding: 5px 10px;
   border-radius: 5px;
   color: var(--purple);
+  background-color: transparent;
 }
 
 .user-options button:hover {
