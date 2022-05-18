@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import SchoolCard from '../components/SchoolCard';
-import Loading from '../components/Loading';
 import ReviewDetail from '../components/ReviewDetail';
-import SchoolReviews from '../components/SchoolReviews';
 import { useUser } from '../contexts/userContext';
 
 const SchoolDetails = () => {
@@ -22,10 +20,10 @@ const SchoolDetails = () => {
 
     const getSchool = () => {
         setIsLoading(true)
-        axios.get(`http://localhost:8000/api/school/${id}`)
+        axios.get(`http://localhost:8000/api/school/average/${id}`)
             .then(res => {
                 setIsLoading(false)
-                setSchool(res.data.schoolById)
+                setSchool(res.data.schoolById[0])
             })
     }
 
@@ -47,7 +45,8 @@ const SchoolDetails = () => {
                         nombre={school.nombreescuela}
                         ciudad={school.ciudad}
                         direccion={school.direccionescuela}
-                        reviews={school.reviews.length}
+                        reviews={school.review_docs.length}
+                        average={school.avgRating}
                     />}
 
 
@@ -66,7 +65,7 @@ const SchoolDetails = () => {
                 {user?<Link to={`/create-review/${id}`}><button>Evaluar</button></Link>:''}
                 <div>
                 {
-                        school?.reviews?.map((review,i)=>
+                        school?.review_docs?.map((review,i)=>
                         <ReviewDetail 
                             id={review._id}
                             cargo={review.cargo}
