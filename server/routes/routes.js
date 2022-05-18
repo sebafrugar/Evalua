@@ -27,6 +27,7 @@ module.exports = function(app){
     app.get("/api/allschoolOrdered", SchoolController.schoolsOrderedByRating);
     app.get("/api/bestschools", SchoolController.bestschools);
     app.get("/api/worstschools", SchoolController.worstschools);
+    app.get('/api/school/average/:id', SchoolController.schoolByIdWithAverage);
 
 }
 

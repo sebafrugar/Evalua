@@ -20,17 +20,17 @@ const ReviewDetail = (props) => {
     return (
         <div key={id}>
             <p> Aqui Mostrar un colegio y sus evaluaciones</p>
-            <p>{cargo}</p>
-            <p>{experiencia}</p>
-            <p>{comentario}</p>
-            <p>{lobueno}</p>
-            <p>{lomalo}</p>
-            <p>{sueldo}</p>
-            <p>{entregamateriales}</p>
-            <p>{ambientedetrabajo}</p>
-            <p>{liderazgo}</p>
-            <p>{respetoalosfuncionarios}</p>
-            <p>{promedio}</p>
+            <p>Cargo : {cargo}</p>
+            <p>Experiencia : {experiencia}</p>
+            <p>Comentario: {comentario}</p>
+            <p>Lo bueno: {lobueno}</p>
+            <p>Lo Malo: {lomalo}</p>
+            <p>Sueldo: {sueldo}</p>
+            <p>Entrega de Materiales : {entregamateriales}</p>
+            <p>Ambiente de trabajo:{ambientedetrabajo}</p>
+            <p>Liderazgo : {liderazgo}</p>
+            <p>Respeto a los Funcionarios: {respetoalosfuncionarios}</p>
+            <p>Promedio de Evaluación: {promedio}</p>
         </div>
     );
 }

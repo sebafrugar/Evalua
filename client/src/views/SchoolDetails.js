@@ -5,9 +5,11 @@ import SchoolCard from '../components/SchoolCard';
 import Loading from '../components/Loading';
 import ReviewDetail from '../components/ReviewDetail';
 import SchoolReviews from '../components/SchoolReviews';
+import { useUser } from '../contexts/userContext';
 
 const SchoolDetails = () => {
 
+    const { user, setUser } = useUser();
     const [school, setSchool] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -30,6 +32,8 @@ const SchoolDetails = () => {
     const back = () => {
         navigate('/search')
     }
+
+    
 
     return (
         <div className='school-details-container'>
@@ -59,7 +63,7 @@ const SchoolDetails = () => {
                 ))} */}
                 
                 <hr />
-                <Link to={`/create-review/${id}`}><button>Evaluar</button></Link>
+                {user?<Link to={`/create-review/${id}`}><button>Evaluar</button></Link>:''}
                 <div>
                 {
                         school?.reviews?.map((review,i)=>

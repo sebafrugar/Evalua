@@ -32,6 +32,7 @@ const EditReview = (props) => {
                     ambientedetrabajo: ambientedetrabajo,
                     liderazgo: liderazgo,
                     respetoalosfuncionarios: respetoalosfuncionarios,
+                    promedio: promedio,
 
                 }}
                 validationSchema={Yup.object().shape({

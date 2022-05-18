@@ -1,3 +1,5 @@
+const { reject } = require("bcrypt/promises");
+const { default: mongoose } = require("mongoose");
 const { School } = require("../models/school.model");
 
 module.exports.allSchools = (req, res) => {
@@ -95,4 +97,26 @@ module.exports.worstschools = (req, res) => {
       ])
         .then(allSchools => res.json({allSchools}))
         .catch(err => res.json({ message: "Algo salio mal", error: err }));
+};
+
+
+
+module.exports.schoolByIdWithAverage = (req, res) => {
+  console.log(req.params)
+  School.aggregate([
+    {$match:{_id:new mongoose.Types.ObjectId(req.params.id)}},
+    {  $lookup: { from: 'reviews', 
+                  localField: 'reviews', 
+                  foreignField: '_id', 
+                  as: 'review_docs'} },
+    {
+    $addFields: {
+      avgRating: {
+        "$avg": "$review_docs.promedio",
+      },
+    },
+  },
+])
+      .then(schoolById => res.json({schoolById }))
+      .catch(err => res.json({ message: "Algo salio mal", error: err }));
 };
