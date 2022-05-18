@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import StarsRating from './StarsRating';
 
 const SchoolCard = (props) => {
 
@@ -7,7 +8,9 @@ const SchoolCard = (props) => {
 
     return (
         <div className='school-list-item'>
-            <div><Link to={`/reviews/${id}`}>{nombre}</Link></div>
+            <div>
+                <Link to={`/reviews/${id}`}>{nombre}</Link>
+            </div>
             <div>
                 <p>Ciudad</p>
                 {ciudad}
@@ -21,8 +24,8 @@ const SchoolCard = (props) => {
                 {reviews}
             </div>
             <div>
-                <p>Promedio Escuela</p>
-                {average}
+                <p>Promedio</p>
+                <StarsRating rating={average}/>
             </div>
         </div>
     );
