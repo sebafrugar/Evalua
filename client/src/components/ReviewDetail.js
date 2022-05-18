@@ -42,7 +42,7 @@ const ReviewDetail = (props) => {
             <p><span>Experiencia:</span> {experiencia}</p>
             <p><span>Comentario:</span> {comentario}</p>
             <p><span>Lo bueno:</span> {lobueno}</p>
-            <p><span>Lo Malo:</span> {lomalo}</p>
+            <p><span>Lo malo:</span> {lomalo}</p>
             <hr/>
             <p><span>Sueldo:</span> {sueldo}</p>
             <p><span>Entrega de materiales:</span> {entregamateriales}</p>

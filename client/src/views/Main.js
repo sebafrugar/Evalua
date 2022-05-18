@@ -67,7 +67,7 @@ const Main = () => {
                         <button onClick={getBests} disabled={activeFilter === 'getBests'}><i className="fa-solid fa-circle-arrow-up"></i>Mejor valorados</button>
                         <button onClick={getWorsts} disabled={activeFilter === 'getWorsts'}><i className="fa-solid fa-circle-arrow-down"></i>Peor valorados</button>
                     </div>
-                    {searchParam && <p className='search-results-text'>Hay {filteredSchools?.length} escuela(s) que coinciden con la búsqueda.</p>}
+                    {searchParam && <p className='search-results-text'>Hay {filteredSchools?.length} escuela(s) que coincide(n) con la búsqueda.</p>}
                     {!isLoading ? <div><SchoolList schools={filteredSchools} /></div> : <Loading />}
                 </div>
             </div>

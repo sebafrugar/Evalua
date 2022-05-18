@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useUser } from '../contexts/userContext';
 import { Link } from 'react-router-dom';
+import ReviewDetail from '../components/ReviewDetail';
 
 const EvaluacionesPersonales = () => {
 
@@ -40,9 +41,24 @@ const EvaluacionesPersonales = () => {
                 <div className='breadcrumb'>
                     <Link to="/search"><i className="fa-solid fa-angles-left"></i>Volver al buscador</Link>
                 </div>
-                {reviews?.map((review, j) =>
-                    <div className='mis-evaluaciones-card' key={j}>
-                        <p><span>Cargo:</span> {review.cargo}</p>
+                {reviews?.map((review, i) =>
+                    <div key={i}>
+                        <ReviewDetail
+                            id={review._id}
+                            date={review.createdAt}
+                            cargo={review.cargo}
+                            experiencia={review.experiencia}
+                            comentario={review.comentario}
+                            lobueno={review.lobueno}
+                            lomalo={review.lomalo}
+                            sueldo={review.sueldo}
+                            entregamateriales={review.entregamateriales}
+                            ambientedetrabajo={review.ambientedetrabajo}
+                            liderazgo={review.liderazgo}
+                            respetoalosfuncionarios={review.respetoalosfuncionarios}
+                            promedio={review.promedio}
+                        />
+                        {/* <p><span>Cargo:</span> {review.cargo}</p>
                         <p><span>Experiencia:</span> {review.experiencia}</p>
                         <p><span>Comentario:</span> {review.comentario}</p>
                         <p><span>Lo bueno:</span> {review.lobueno}</p>
@@ -54,7 +70,7 @@ const EvaluacionesPersonales = () => {
                         <p><span>Liderazgo:</span> {review.liderazgo}</p>
                         <p><span>Respeto a los Funcionarios:</span> {review.respetoalosfuncionarios}</p>
                         <hr/>
-                        <p><span>Promedio:</span> {review.promedio}</p>
+                        <p><span>Promedio:</span> {review.promedio}</p> */}
                         <div className='actions'>
                             <Link to={"/editarevaluaciones/" + review._id} ><button className='btn-edit'>Editar</button></Link>
                             <button className='btn-delete' onClick={() => deleteReview(review._id)}>Eliminar</button>

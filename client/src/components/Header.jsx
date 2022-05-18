@@ -10,11 +10,10 @@ const Header = () => {
                 <h1><Link to='/'>Evalúa</Link></h1>
                     <nav>
                         <Link to={"/"}>Inicio</Link>
-                        <Link to={"/search"}><i className="fa-solid fa-magnifying-glass"></i> Evaluaciones</Link>
+                        <Link to={"/search"}><i className="fa-solid fa-magnifying-glass"></i>Evaluaciones</Link>
                         {!user?<Link to={"/registerLogin"}>Inicia sesión / Regístrate</Link>:''}
                     </nav>
             </div>
-        
     );
 }
 

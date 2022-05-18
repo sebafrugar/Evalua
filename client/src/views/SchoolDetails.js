@@ -53,7 +53,7 @@ const SchoolDetails = () => {
                     <SchoolReviews/>
                 ))} */}
 
-                {user ? <Link to={`/create-review/${id}`}><div className='btn-evaluar'><button>Evaluar este establecimiento</button></div></Link> : ''}
+                {user ? <Link to={`/create-review/${id}`}><div className='btn-evaluar'><button><i className="fa-regular fa-star"></i>Evaluar este establecimiento</button></div></Link> : ''}
                 <div>
                     {school?.review_docs?.map((review, i) =>
                         <ReviewDetail

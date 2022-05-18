@@ -6,14 +6,16 @@ const BannerInfo = () => {
         <div>
             <div className='banner'>
                 <p className='banner-message'>
-                    Bienvenido al sistema de <br/>evaluación de clima laboral escolar
+                    Bienvenidos al sistema de <br/>evaluación de clima laboral escolar
                 </p>
             </div>
             <div className='info'>
                 <h2>¿Qué es Evalúa?</h2>
                 <div className='info-contents'>
                     <div>
-                        <p>Donec ut neque purus. Nam euismod sapien sit amet purus interdum maximus. Suspendisse id dignissim dui, in interdum sapien. Duis et velit eu magna sodales porta vitae in diam. Sed at faucibus ante. Quisque ultricies porttitor faucibus. Sed feugiat id dui et vestibulum. Donec bibendum mi ut nisi auctor, non porta nisi consectetur. Duis a justo dignissim, rutrum magna eget, facilisis nibh. Duis a libero nec massa placerat mattis.</p>
+                        <p>Evalúa, es una plataforma que califica las escuelas como lugar de trabajo.</p>
+                        <p>Nuestra misión es entregar una herramienta para visivilizar realidades que se encuentan ocultas en el diario vivir de la comunidad educativa, permitiendo destacar a aquellos empleadores donde sus pares, tales como: docentes, auxiliares, Psicopedagogos, Personal de alimentación, etc, recomiendan trabajar.</p>
+                        <p>Sabemos que los equipos de trabajo que cuentan con herramientas adecuadas, trato respetuoso, etica profesional pueden influir directamente en los estudiantes, permitiendo una mejor educación y mejor bienestar emocional para nuestros estudiantes.</p>
                     </div>
                     <div>
                         <img src={info}/>
