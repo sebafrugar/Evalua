@@ -7,6 +7,7 @@
 :root {
   --purple: #403EAE;
   --purple-hover: #6462d6;
+  --purple-01: rgb(64, 62, 174, 0.1);
   --gray: #444444;
   --gray-05: rgb(68, 68, 68, 0.5);
   --gray-02: rgb(68, 68, 68, 0.2);
@@ -345,6 +346,75 @@ h1 {
   border:none;
   border-top: 1px solid var(--gray-02);
   margin: 15px 0;
+}
+
+.review-card {
+  background-color: var(--gray-005);
+  line-height: 25px;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top:30px;
+  font-size: 15px;
+}
+
+.review-card hr {
+  border:none;
+  border-top: 1px solid var(--gray-02);
+  margin: 15px 0;
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-card-header div:first-child {
+  display: flex;
+  gap: 20px;
+}
+
+.review-card-header .cargo {
+  font-size: 13px;
+  background-color: var(--purple-01);
+  color: var(--purple);
+  padding: 2px 10px;
+  border-radius: 5px;
+}
+
+.review-card-header .fecha {
+  font-size: 13px;
+  background-color: var(--gray-005);
+  color: var(--gray);
+  padding: 2px 10px;
+  border-radius: 5px;
+}
+
+.review-card span {
+  font-weight: 500;
+}
+
+.btn-evaluar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 50px;
+}
+
+.btn-evaluar button {
+  cursor: pointer;
+  background-color: var(--purple);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 15px;
+}
+
+.btn-evaluar button:hover {
+  background-color: var(--purple-hover);
 }
 
 .btn-edit {

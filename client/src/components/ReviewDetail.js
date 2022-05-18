@@ -1,10 +1,10 @@
 import React from 'react';
+import StarsRating from './StarsRating';
 
 const ReviewDetail = (props) => {
 
-    //aquí estoy pintando los comentarios
-
-    const {id,
+    const { id,
+        date,
         cargo,
         experiencia,
         comentario,
@@ -17,20 +17,38 @@ const ReviewDetail = (props) => {
         respetoalosfuncionarios,
         promedio } = props;
 
+        const formattedDate = new Date(date).toLocaleDateString(
+            'es-CL',
+            {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+                timeZone: 'America/Santiago',
+                hour: 'numeric',
+                minute: 'numeric'
+            }
+        )
+
     return (
-        <div key={id}>
-            <p> Aqui Mostrar un colegio y sus evaluaciones</p>
-            <p>Cargo : {cargo}</p>
-            <p>Experiencia : {experiencia}</p>
-            <p>Comentario: {comentario}</p>
-            <p>Lo bueno: {lobueno}</p>
-            <p>Lo Malo: {lomalo}</p>
-            <p>Sueldo: {sueldo}</p>
-            <p>Entrega de Materiales : {entregamateriales}</p>
-            <p>Ambiente de trabajo:{ambientedetrabajo}</p>
-            <p>Liderazgo : {liderazgo}</p>
-            <p>Respeto a los Funcionarios: {respetoalosfuncionarios}</p>
-            <p>Promedio de Evaluación: {promedio}</p>
+        <div className='review-card' key={id}>
+            <div className='review-card-header'>
+                <div>
+                    <p className='fecha'>{formattedDate}</p>
+                    <StarsRating rating={promedio}/>
+                </div>
+                <div className='cargo'>{cargo}</div>
+            </div>
+            <hr/>
+            <p><span>Experiencia:</span> {experiencia}</p>
+            <p><span>Comentario:</span> {comentario}</p>
+            <p><span>Lo bueno:</span> {lobueno}</p>
+            <p><span>Lo Malo:</span> {lomalo}</p>
+            <hr/>
+            <p><span>Sueldo:</span> {sueldo}</p>
+            <p><span>Entrega de materiales:</span> {entregamateriales}</p>
+            <p><span>Ambiente de trabajo:</span> {ambientedetrabajo}</p>
+            <p><span>Liderazgo:</span> {liderazgo}</p>
+            <p><span>Respeto a los Funcionarios:</span> {respetoalosfuncionarios}</p>
         </div>
     );
 }

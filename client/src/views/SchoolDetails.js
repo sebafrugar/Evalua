@@ -31,43 +31,34 @@ const SchoolDetails = () => {
         navigate('/search')
     }
 
-    
+
 
     return (
         <div className='school-details-container'>
             <div className='school-details'>
-                <button onClick={back}>Volver al buscador</button>
-                <hr />
-                
-                    {school&&<SchoolCard
-                        
-                        id={school._id}
-                        nombre={school.nombreescuela}
-                        ciudad={school.ciudad}
-                        direccion={school.direccionescuela}
-                        reviews={school.review_docs.length}
-                        average={school.avgRating}
-                    />}
+                <div className='breadcrumb'>
+                    <Link to="/search"><i className="fa-solid fa-angles-left"></i>Volver al buscador</Link>
+                </div>
+                {school && <SchoolCard
+                    id={school._id}
+                    nombre={school.nombreescuela}
+                    ciudad={school.ciudad}
+                    direccion={school.direccionescuela}
+                    reviews={school.review_docs.length}
+                    average={school.avgRating}
+                />}
 
-
-                
-                {/* DESPLEGAR DESGLOSE DE REVIEWS EN EL SIGUIENTE COMPONENTE */}
-                {/* {schools?.map((school, i) => (
-                    <ReviewDetail/>
-                ))} */}
-                
                 {/* DESPLEGAR REVIEWS DE LA ESCUELA EN EL SIGUIENTE COMPONENTE */}
                 {/* {schools?.map((school, i) => (
                     <SchoolReviews/>
                 ))} */}
-                
-                <hr />
-                {user?<Link to={`/create-review/${id}`}><button>Evaluar</button></Link>:''}
+
+                {user ? <Link to={`/create-review/${id}`}><div className='btn-evaluar'><button>Evaluar este establecimiento</button></div></Link> : ''}
                 <div>
-                {
-                        school?.review_docs?.map((review,i)=>
-                        <ReviewDetail 
+                    {school?.review_docs?.map((review, i) =>
+                        <ReviewDetail
                             id={review._id}
+                            date={review.createdAt}
                             cargo={review.cargo}
                             experiencia={review.experiencia}
                             comentario={review.comentario}
@@ -81,10 +72,10 @@ const SchoolDetails = () => {
                             promedio={review.promedio}
                         />)
                     }
-                    </div>
+                </div>
             </div>
 
-            
+
 
         </div>
     );
