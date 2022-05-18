@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const SchoolCard = (props) => {
 
-    const { id, nombre, ciudad, direccion, reviews } = props;
+    const { id, nombre, ciudad, direccion, reviews, average } = props;
 
     return (
         <div className='school-list-item'>
@@ -19,6 +19,10 @@ const SchoolCard = (props) => {
             <div>
                 <p>Evaluaciones</p>
                 {reviews}
+            </div>
+            <div>
+                <p>Promedio Escuela</p>
+                {average}
             </div>
         </div>
     );

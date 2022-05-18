@@ -99,8 +99,6 @@ module.exports.worstschools = (req, res) => {
         .catch(err => res.json({ message: "Algo salio mal", error: err }));
 };
 
-
-
 module.exports.schoolByIdWithAverage = (req, res) => {
   console.log(req.params)
   School.aggregate([
