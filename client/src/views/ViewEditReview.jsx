@@ -37,7 +37,7 @@ const ViewEditReview = () => {
                 ambientedetrabajo: values.ambientedetrabajo,
                 liderazgo: values.liderazgo,
                 respetoalosfuncionarios: values.respetoalosfuncionarios,
-                promedio: promedioUpdate,
+                promedio: promedioUpdate.toFixed(1),
             })
             .then(res => {
                 console.log(res)
