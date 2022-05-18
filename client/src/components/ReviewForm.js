@@ -39,7 +39,7 @@ const ReviewForm = () => {
                 .then(res => {
                     console.log(res);
                 });
-                //back()
+                back()
             })
             .catch(err => {
                 console.log(err.response.data)
@@ -70,7 +70,7 @@ const ReviewForm = () => {
                     ambientedetrabajo: 0,
                     liderazgo: 0,
                     respetoalosfuncionarios: 0,
-                    promedio: promedio.toFixed(1),
+                    promedio: 0,
 
                 }}
                 validationSchema={Yup.object().shape({

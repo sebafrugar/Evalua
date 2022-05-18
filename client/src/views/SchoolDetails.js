@@ -63,7 +63,7 @@ const SchoolDetails = () => {
                 <div>
                 {
                         school?.reviews?.map((review,i)=>
-                        <ReviewDetail 
+                        <ReviewDetail key={i}
                             id={review._id}
                             cargo={review.cargo}
                             experiencia={review.experiencia}
