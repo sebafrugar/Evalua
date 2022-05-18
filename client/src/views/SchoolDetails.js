@@ -33,6 +33,8 @@ const SchoolDetails = () => {
         navigate('/search')
     }
 
+    
+
     return (
         <div className='school-details-container'>
             <div className='school-details'>
