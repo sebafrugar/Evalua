@@ -39,7 +39,7 @@ const ReviewForm = () => {
                 .then(res => {
                     console.log(res);
                 });
-                //back()
+                back()
             })
             .catch(err => {
                 console.log(err.response.data)
@@ -189,7 +189,7 @@ const ReviewForm = () => {
                                         <label htmlFor="Respeto al los funcionarios">Respeto al los funcionarios</label>
                                         <Field id='respetoalosfuncionarios' type="number" max="5" min="0" step="0.1" name='respetoalosfuncionarios' />
                                         {errors.respetoalosfuncionarios && touched.respetoalosfuncionarios && <p>{errors.respetoalosfuncionarios}</p>}
-                                        <button type="submit" disabled={Object.values(errors).length > 0}>Registrarse</button>
+                                        <button type="submit" disabled={Object.values(errors).length > 0}>Evaluar</button>
                                     </div>
                                 </Form>
                             </div>
