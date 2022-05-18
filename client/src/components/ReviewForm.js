@@ -24,7 +24,7 @@ const ReviewForm = () => {
         console.log(newReview)
         let valoresPromedio = [newReview.sueldo + newReview.entregamateriales + newReview.ambientedetrabajo + newReview.liderazgo + newReview.respetoalosfuncionarios];
         let sum = valoresPromedio.reduce((previous, current) => current += previous);
-        setPromedio(sum/5)
+        let promedioActualizado = (sum/5)
         axios.post(`http://localhost:8000/api/review/create`, {cargo : newReview.cargo, experiencia: newReview.experiencia,
                                                                 comentario: newReview.comentario,lobueno: newReview.lobueno,
                                                                 lomalo: newReview.lomalo, sueldo: newReview.sueldo,
@@ -32,14 +32,14 @@ const ReviewForm = () => {
                                                                 ambientedetrabajo: newReview.ambientedetrabajo,
                                                                 liderazgo: newReview.liderazgo,
                                                                 respetoalosfuncionarios: newReview.respetoalosfuncionarios,
-                                                                promedio: promedio.toFixed(1) , author : user._id})
+                                                                promedio: promedioActualizado.toFixed(1) , author : user._id})
             .then(res => {
                 console.log(res)
                 axios.put('http://localhost:8000/api/school/update/' + id, { reviews: [...school.reviews, res.data.newReview] })
                 .then(res => {
                     console.log(res);
                 });
-                //back()
+                back()
             })
             .catch(err => {
                 console.log(err.response.data)
@@ -70,7 +70,7 @@ const ReviewForm = () => {
                     ambientedetrabajo: 0,
                     liderazgo: 0,
                     respetoalosfuncionarios: 0,
-                    promedio: 0,
+                    promedio: promedio.toFixed(1),
 
                 }}
                 validationSchema={Yup.object().shape({
@@ -189,7 +189,7 @@ const ReviewForm = () => {
                                         <label htmlFor="Respeto al los funcionarios">Respeto al los funcionarios</label>
                                         <Field id='respetoalosfuncionarios' type="number" max="5" min="0" step="0.1" name='respetoalosfuncionarios' />
                                         {errors.respetoalosfuncionarios && touched.respetoalosfuncionarios && <p>{errors.respetoalosfuncionarios}</p>}
-                                        <button type="submit" disabled={Object.values(errors).length > 0}>Registrarse</button>
+                                        <button type="submit" disabled={Object.values(errors).length > 0}>Evaluar</button>
                                     </div>
                                 </Form>
                             </div>
