@@ -65,13 +65,8 @@ const SchoolDetails = () => {
                 {user?<Link to={`/create-review/${id}`}><button>Evaluar</button></Link>:''}
                 <div>
                 {
-<<<<<<< HEAD
                         school?.review_docs?.map((review,i)=>
                         <ReviewDetail 
-=======
-                        school?.reviews?.map((review,i)=>
-                        <ReviewDetail key={i}
->>>>>>> b447c548194620b6b20584e611804a6e9d7f5194
                             id={review._id}
                             cargo={review.cargo}
                             experiencia={review.experiencia}
