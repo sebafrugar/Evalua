@@ -17,6 +17,7 @@ const EditReview = (props) => {
         respetoalosfuncionarios,
         promedio } = props;
 
+
     return (
         <div >
             <Formik

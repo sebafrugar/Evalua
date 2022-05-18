@@ -22,6 +22,9 @@ const ViewEditReview = () => {
 
     const editReview = (values) => {
         console.log(values)
+        let valoresPromedio = [values.sueldo + values.entregamateriales + values.ambientedetrabajo + values.liderazgo + values.respetoalosfuncionarios];
+        let sum = valoresPromedio.reduce((previous, current) => current += previous);
+        let promedioUpdate= (sum/5)
         axios.put('http://localhost:8000/api/review/update/' + id,
             {
                 cargo: values.cargo,
@@ -34,7 +37,7 @@ const ViewEditReview = () => {
                 ambientedetrabajo: values.ambientedetrabajo,
                 liderazgo: values.liderazgo,
                 respetoalosfuncionarios: values.respetoalosfuncionarios,
-                promedio: values.promedio,
+                promedio: promedioUpdate.toFixed(1),
             })
             .then(res => {
                 console.log(res)
