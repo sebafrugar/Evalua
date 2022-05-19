@@ -653,8 +653,13 @@ footer {
 
 @media only screen and (max-width: 960px) {
 
+  h1 {
+    font-size: 28px;
+  }
+
   .header nav {
     font-size: 14px;
+    gap: 15px;
   }
 
   .filters {
@@ -690,6 +695,10 @@ footer {
 
   .school-list-item div {
     font-size: 14px;
+  }
+
+  .register-login {
+    flex-direction: column-reverse;
   }
 
 }
