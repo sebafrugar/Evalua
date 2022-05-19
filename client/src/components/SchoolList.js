@@ -15,7 +15,7 @@ const SchoolList = (props) => {
                     nombre={school.nombreescuela}
                     ciudad={school.ciudad}
                     direccion={school.direccionescuela}
-                    reviews={school.reviews.length}
+                    reviews={school.review_docs.length}
                     average={school.avgRating}
                 />
             ))}
